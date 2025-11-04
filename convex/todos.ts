@@ -29,6 +29,21 @@ export const deleteTodo = mutation({
     return { _id: id };
   },
 });
+
+export const clearCompleted = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const completedTodos = await ctx.db
+      .query("todos")
+      .filter((q) => q.eq(q.field("completed"), true))
+      .collect();
+
+    await Promise.all(completedTodos.map((todo) => ctx.db.delete(todo._id)));
+
+    return { cleared: completedTodos.length };
+  },
+});
+
 export const getTodos = query(async ({ db }) => {
   return await db.query("todos").collect();
 });
