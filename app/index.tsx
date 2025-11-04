@@ -202,7 +202,7 @@ export default function Index() {
             </>
           )}
         </View>
-        <View className="flex-row items-center w-full  px-10 py-5 bg-white shadow-md justify-evenly rounded-xl dark:bg-slate-800">
+        <View className="flex-row items-center w-full px-10 py-5 bg-white shadow-md justify-evenly rounded-xl dark:bg-slate-800">
           {(
             [
               { label: "All", value: "all" },
